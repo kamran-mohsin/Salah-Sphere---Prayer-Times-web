@@ -1,0 +1,668 @@
+.tasbeeh-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+.zen-hero-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.zen-hero-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+.zen-top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.zen-title-wrap h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 4px;
+}
+.zen-controls-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.sound-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: #34d399;
+}
+.zen-select {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+.zen-select option {
+    background: #1e293b;
+    color: #ffffff;
+}
+.target-selector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+.target-lbl {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-left: 6px;
+}
+.target-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.target-btn.active {
+    background: #10b981;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+.zikr-picker-carousel {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(52, 211, 153, 0.3) transparent;
+}
+.zikr-picker-carousel::-webkit-scrollbar {
+    height: 4px;
+}
+.zikr-picker-carousel::-webkit-scrollbar-thumb {
+    background: rgba(52, 211, 153, 0.3);
+    border-radius: 4px;
+}
+.zikr-chip {
+    flex-shrink: 0;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+.zikr-chip:hover {
+    border-color: rgba(52, 211, 153, 0.4);
+    color: #ffffff;
+}
+.zikr-chip.active {
+    background: rgba(52, 211, 153, 0.15);
+    border-color: #34d399;
+    color: #34d399;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.25);
+}
+.zen-counter-core {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    margin: 10px 0;
+}
+.aura-outer-ring {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aura-progress-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+.aura-bg-circle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 6;
+}
+.aura-fill-circle {
+    fill: none;
+    stroke: url(#auraGrad);
+    stroke: #34d399;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 722.5;
+    stroke-dashoffset: 722.5;
+    transition: stroke-dashoffset 0.2s ease, stroke 0.3s;
+    filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.5));
+}
+.zen-tap-button {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1E293B 40%, #0F172A 100%);
+    border: 2px solid rgba(52, 211, 153, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.1s ease, border-color 0.2s, box-shadow 0.2s;
+    user-select: none;
+}
+.zen-tap-button:hover {
+    border-color: #34d399;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(52, 211, 153, 0.3);
+}
+.zen-tap-button:active {
+    transform: scale(0.96);
+    border-color: #f59e0b;
+}
+.zen-tap-ripple {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0.6);
+}
+.zen-tap-ripple.animate {
+    animation: rippleWave 0.35s ease-out;
+}
+@keyframes rippleWave {
+    0% { opacity: 0.8; transform: scale(0.5); }
+    100% { opacity: 0; transform: scale(1.4); }
+}
+.zen-arabic-display {
+    font-size: 22px;
+    color: #fbbf24;
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    direction: rtl;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+.zen-count-number {
+    font-size: 58px;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: 'Poppins', monospace;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.zen-tap-hint {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #34d399;
+    margin-top: 4px;
+}
+.zen-round-info {
+    font-size: 10px;
+    color: #64748b;
+    margin-top: 2px;
+}
+.zen-side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.action-circle-btn {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.action-circle-btn i {
+    font-size: 15px;
+}
+.action-circle-btn span {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.action-circle-btn:hover {
+    border-color: #34d399;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+.action-circle-btn.reset-btn:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+.active-zikr-details {
+    text-align: center;
+    max-width: 650px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.active-zikr-details h3 {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 800;
+}
+.trans-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34d399;
+}
+.meaning-text {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+.urdu-text {
+    font-size: 15px;
+    color: #fbbf24;
+    direction: rtl;
+    font-family: 'Noto Nastaliq Urdu', 'Urdu Typesetting', serif;
+    margin-top: 4px;
+}
+.zikr-catalog-section, .duas-library-section {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 28px;
+}
+.reset-all-zikr-btn {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #f87171;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+.reset-all-zikr-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+}
+.zikr-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+.zikr-grid-card {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+.zikr-grid-card:hover {
+    border-color: rgba(52, 211, 153, 0.4);
+    transform: translateY(-3px);
+}
+.zikr-grid-card.active-card {
+    border-color: #34d399;
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.15);
+}
+.z-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.z-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.z-arabic-small {
+    font-size: 18px;
+    color: #fbbf24;
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    line-height: 1.2;
+}
+.z-trans-small {
+    font-size: 11px;
+    color: #94a3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.z-counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.z-count-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: 'Poppins', monospace;
+}
+.z-target-badge {
+    font-size: 11px;
+    color: #34d399;
+    font-weight: 700;
+}
+.z-card-actions {
+    display: flex;
+    gap: 6px;
+}
+.z-tap-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+    border: none;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.z-tap-btn:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    transform: translateY(-1px);
+}
+.z-reset-mini {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.z-reset-mini:hover {
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+.duas-filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 16px 0 24px;
+}
+.search-dua-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 18px;
+    border-radius: 14px;
+}
+.search-dua-box i {
+    color: #34d399;
+    font-size: 15px;
+}
+.search-dua-box input {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+}
+.search-dua-box input::placeholder {
+    color: #64748b;
+}
+.dua-category-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+.cat-pill {
+    flex-shrink: 0;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.cat-pill:hover {
+    color: #ffffff;
+    border-color: rgba(52, 211, 153, 0.3);
+}
+.cat-pill.active {
+    background: #10b981;
+    border-color: #34d399;
+    color: #ffffff;
+}
+.duas-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+.dua-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+.dua-card:hover {
+    border-color: rgba(52, 211, 153, 0.35);
+    transform: translateY(-2px);
+}
+.dua-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dua-category-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+.dua-card-actions {
+    display: flex;
+    gap: 6px;
+}
+.mini-icon-btn {
+    height: 30px;
+    width: 30px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.mini-icon-btn:hover {
+    color: #34d399;
+    border-color: #34d399;
+}
+.dua-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.dua-arabic-text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #fbbf24;
+    text-align: right;
+    direction: rtl;
+    font-family: 'Amiri', serif;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.dua-trans-text {
+    font-size: 13px;
+    font-style: italic;
+    color: #cbd5e1;
+}
+.dua-meaning-text {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+.dua-urdu-text {
+    font-size: 14px;
+    color: #6ee7b7;
+    text-align: right;
+    direction: rtl;
+    font-family: 'Noto Nastaliq Urdu', serif;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mini-icon-btn.speaking {
+    background: #10b981;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+    border-color: #34d399;
+}
+@media (max-width: 1100px) {
+    .zikr-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 900px) {
+    .duas-catalog-grid {
+        grid-template-columns: 1fr;
+    }
+    .zen-counter-core {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .zen-side-actions {
+        flex-direction: row;
+    }
+    .zen-hero-card {
+        padding: 24px 18px;
+    }
+    .zen-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+@media (max-width: 600px) {
+    .tasbeeh-container {
+        padding: 16px 12px 30px;
+        gap: 20px;
+    }
+    .zikr-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .zen-tap-button {
+        width: 185px;
+        height: 185px;
+    }
+    .aura-outer-ring {
+        width: 215px;
+        height: 215px;
+    }
+    .zen-count-number {
+        font-size: 44px;
+    }
+    .zen-arabic-display {
+        font-size: 19px;
+    }
+    .dua-category-pills {
+        gap: 6px;
+    }
+    .cat-pill {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    .dua-arabic-text {
+        font-size: 17px;
+    }
+}

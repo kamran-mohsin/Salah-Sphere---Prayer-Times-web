@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Fasting & Sunnah Calendar - Salah Sphere</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="fasting.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body>
+    <div class="map">
+      <header>
+        <div class="bar">
+          <div class="nam" onclick="window.location.href='main.html'">
+            <img src="mosque-icon.svg" width="28" height="28" alt="Salah Sphere" />
+            <p>Salah Sphere</p>
+          </div>
+          <nav class="nav-links">
+            <a href="main.html" class="nav-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+            <a href="qadha.html" class="nav-item"><i class="fa-solid fa-list-check"></i> <span>Qadha Tracker</span></a>
+            <a href="qibla.html" class="nav-item"><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a>
+            <a href="fasting.html" class="nav-item active"><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a>
+            <a href="tasbeeh.html" class="nav-item"><i class="fa-solid fa-hands-praying"></i> <span>Zen Tasbeeh & Duas</span></a>
+            <a href="activity.html" class="nav-item"><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a>
+          </nav>
+          <div class="streak-badge">
+            <i class="fa-solid fa-fire"></i>
+            <span id="fastStreakNum">0</span> Days Fasted
+          </div>
+        </div>
+      </header>
+      <div class="second">
+        <div class="second-container">
+          <div class="navbar">
+            <div class="mosq">
+              <i class="fa-solid fa-moon"></i>
+              <div class="row">
+                <h1>Smart Fasting</h1>
+                <p>Sunnah Calendar & Fasting Companion</p>
+              </div>
+            </div>
+          </div>
+          <div class="search">
+            <input type="text" id="fastingSearchInput" placeholder="Search City for Sehri & Iftar (e.g. Lahore, Karachi, Makkah)..." />
+            <div class="glass" id="fastingSearchBtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+          <div class="quick-summary">
+            <div class="summary-pill">
+              <span class="pill-label">Fasting Status</span>
+              <b id="heroFastingStatus">Non-Fasting Window</b>
+            </div>
+            <div class="summary-pill">
+              <span class="pill-label">Sunnah Days This Week</span>
+              <b id="sunnahDaysCount">Mon & Thu</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fasting-container">
+        <section class="quick-cities-bar">
+          <span class="quick-cities-label"><i class="fa-solid fa-earth-americas"></i> Popular Cities:</span>
+          <div class="cities-pills-list">
+            <button class="city-pill-btn active" data-city="Lahore">🇵🇰 Lahore</button>
+            <button class="city-pill-btn" data-city="Karachi">🇵🇰 Karachi</button>
+            <button class="city-pill-btn" data-city="Islamabad">🇵🇰 Islamabad</button>
+            <button class="city-pill-btn" data-city="Makkah">🕋 Makkah</button>
+            <button class="city-pill-btn" data-city="Madinah">🕌 Madinah</button>
+            <button class="city-pill-btn" data-city="Dubai">🇦🇪 Dubai</button>
+            <button class="city-pill-btn" data-city="Istanbul">🇹🇷 Istanbul</button>
+            <button class="city-pill-btn" data-city="London">🇬🇧 London</button>
+            <button class="city-pill-btn" data-city="New_York">🇺🇸 New York</button>
+          </div>
+        </section>
+        <section class="live-countdown-card reveal">
+          <div class="countdown-head">
+            <div class="cd-title">
+              <span class="badge-tag">✦ LIVE TIMINGS & COUNTDOWN</span>
+              <h2 id="nextEventTitle">Countdown to Iftar</h2>
+            </div>
+            <div class="location-pill" id="currentCityPill">
+              <i class="fa-solid fa-location-dot"></i> <span id="fastingCityName">Current City</span>
+            </div>
+          </div>
+          <div class="timer-display-box">
+            <div class="time-block">
+              <span class="tb-num" id="cdHours">00</span>
+              <span class="tb-lbl">Hours</span>
+            </div>
+            <span class="tb-colon">:</span>
+            <div class="time-block">
+              <span class="tb-num" id="cdMins">00</span>
+              <span class="tb-lbl">Minutes</span>
+            </div>
+            <span class="tb-colon">:</span>
+            <div class="time-block">
+              <span class="tb-num" id="cdSecs">00</span>
+              <span class="tb-lbl">Seconds</span>
+            </div>
+          </div>
+          <div class="times-dual-row">
+            <div class="time-side-card sehri-side">
+              <div class="side-info">
+                <i class="fa-solid fa-cloud-moon"></i>
+                <div>
+                  <span class="side-tag">Suhoor Ends (Sehri)</span>
+                  <h3 id="sehriTimeDisplay">04:50 AM</h3>
+                </div>
+              </div>
+              <span class="side-hint">Stop eating 10 mins prior</span>
+            </div>
+            <div class="progress-arc-wrap">
+              <div class="fasting-progress-bar">
+                <div class="fasting-progress-fill" id="fastingProgressFill"></div>
+              </div>
+              <span id="fastingElapsedText">Fasting Day Progress</span>
+            </div>
+            <div class="time-side-card iftar-side">
+              <div class="side-info">
+                <i class="fa-solid fa-sun"></i>
+                <div>
+                  <span class="side-tag">Iftar Begins (Maghrib)</span>
+                  <h3 id="iftarTimeDisplay">06:15 PM</h3>
+                </div>
+              </div>
+              <span class="side-hint">Break fast with dates & water</span>
+            </div>
+          </div>
+        </section>
+        <div class="fasting-grid-two reveal">
+          <section class="sunnah-cal-card">
+            <div class="sec-head">
+              <div class="sec-left">
+                <span class="badge-tag">✦ SUNNAH SCHEDULE</span>
+                <h3>Recommended Fasting Days</h3>
+              </div>
+              <span class="hijri-badge" id="hijriMonthBadge">Islamic Calendar</span>
+            </div>
+            <p class="sec-sub">The Prophet ﷺ encouraged fasting on specific days outside Ramadan for immense reward.</p>
+            <div class="sunnah-items">
+              <div class="sunnah-box active-sunnah">
+                <div class="s-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="s-content">
+                  <h4>Monday & Thursday Fasting</h4>
+                  <p>Weekly Sunnah — "Deeds are presented on Monday and Thursday, and I love for my deeds to be presented while fasting." (Tirmidhi)</p>
+                </div>
+                <span class="s-tag">Weekly Sunnah</span>
+              </div>
+              <div class="sunnah-box">
+                <div class="s-icon"><i class="fa-solid fa-moon"></i></div>
+                <div class="s-content">
+                  <h4>Ayyam al-Beed (White Days)</h4>
+                  <p>13th, 14th & 15th of every Lunar Month — Equal to fasting the entire year in spiritual reward.</p>
+                </div>
+                <span class="s-tag">Monthly Sunnah</span>
+              </div>
+              <div class="sunnah-box">
+                <div class="s-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="s-content">
+                  <h4>6 Days of Shawwal & Day of Ashura</h4>
+                  <p>Fasting Ramadan followed by 6 days of Shawwal is like fasting a lifetime. Ashura expiates previous year sins.</p>
+                </div>
+                <span class="s-tag">Seasonal</span>
+              </div>
+            </div>
+            <div class="today-fast-action">
+              <div class="today-text">
+                <b>Are you fasting today?</b>
+                <span>Keep track of your spiritual consistency</span>
+              </div>
+              <button id="toggleFastTodayBtn" class="fast-btn"><i class="fa-solid fa-check"></i> <span id="toggleFastBtnText">I am Fasting Today</span></button>
+            </div>
+          </section>
+          <div class="fasting-right-col">
+            <section class="stats-card">
+              <div class="sec-head">
+                <div class="sec-left">
+                  <span class="badge-tag">✦ PERSONAL TRACKER</span>
+                  <h3>Fasting Log & Qadha</h3>
+                </div>
+              </div>
+              <div class="stats-mini-grid">
+                <div class="stat-mini">
+                  <span class="stat-v" id="totalFastsCount">0</span>
+                  <span class="stat-k">Fasts Kept</span>
+                </div>
+                <div class="stat-mini">
+                  <span class="stat-v" id="sunnahFastsCount">0</span>
+                  <span class="stat-k">Sunnah Fasts</span>
+                </div>
+                <div class="stat-mini">
+                  <span class="stat-v" id="qadhaFastsCount">0</span>
+                  <span class="stat-k">Qadha Fasts Remaining</span>
+                </div>
+              </div>
+              <div class="qadha-fast-tools">
+                <span>Manage Missed Ramadan Fasts:</span>
+                <div class="qf-actions">
+                  <button class="qf-btn" id="decQadhaFastBtn" title="Completed 1 Qadha Fast"><i class="fa-solid fa-check"></i> Made Up</button>
+                  <button class="qf-btn qf-add" id="incQadhaFastBtn">+1 Missed</button>
+                </div>
+              </div>
+            </section>
+            <section class="water-card">
+              <div class="sec-head">
+                <div class="sec-left">
+                  <span class="badge-tag">✦ IFTAR TO SEHRI HYDRATION</span>
+                  <h3>Water Intake (8 Cups)</h3>
+                </div>
+                <span class="water-progress-text" id="waterCountText">0/8 Cups</span>
+              </div>
+              <p class="water-sub">Drink water between Iftar and Suhoor to maintain optimal energy and kidney health.</p>
+              <div class="water-cups-row" id="waterCupsContainer"></div>
+              <button id="resetWaterBtn" class="reset-water-btn"><i class="fa-solid fa-rotate-left"></i> Reset Today's Water</button>
+            </section>
+          </div>
+        </div>
+        <section class="duas-fasting-card reveal">
+          <div class="sec-head">
+            <div class="sec-left">
+              <span class="badge-tag">✦ AUTHENTIC DUAS</span>
+              <h3>Supplications for Fasting</h3>
+            </div>
+          </div>
+          <div class="duas-two-cols">
+            <div class="dua-item-box">
+              <div class="dua-top">
+                <span class="dua-name"><i class="fa-solid fa-cloud-moon"></i> Suhoor Intention (Niyyah)</span>
+                <button class="audio-btn" id="playSuhoorDuaBtn" title="Listen to Dua"><i class="fa-solid fa-volume-high"></i></button>
+              </div>
+              <div class="dua-arabic">وَبِصَوْمِ غَدٍ نَوَيْتُ مِنْ شَهْرِ رَمَضَانَ</div>
+              <div class="dua-trans">"Wa bisawmi ghadin nawaytu min shahri ramadan"</div>
+              <div class="dua-mean">"And I intend to keep the fast tomorrow for the month of Ramadan."</div>
+              <div class="dua-urdu">اور میں نے رمضان کے کل کے روزے کی نیت کی۔</div>
+            </div>
+            <div class="dua-item-box">
+              <div class="dua-top">
+                <span class="dua-name"><i class="fa-solid fa-sun"></i> Iftar Dua (Breaking Fast)</span>
+                <button class="audio-btn" id="playIftarDuaBtn" title="Listen to Dua"><i class="fa-solid fa-volume-high"></i></button>
+              </div>
+              <div class="dua-arabic">اللَّهُمَّ إِنِّي لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَىٰ رِزْقِكَ أَفْطَرْتُ</div>
+              <div class="dua-trans">"Allahumma inni laka sumtu wa bika aamantu wa 'ala rizq-ika aftartu"</div>
+              <div class="dua-mean">"O Allah! I fasted for You and I believe in You and I break my fast with Your sustenance."</div>
+              <div class="dua-urdu">اے اللہ! میں نے تیرے لیے روزہ رکھا اور تجھ پر ایمان لایا اور تیرے ہی رزق سے افطار کیا۔</div>
+            </div>
+          </div>
+        </section>
+        <footer class="dash-footer">
+          <div class="footer-links">
+          <span>Salah Sphere © 2026</span>
+          <span>Developed with <i class="fa-solid fa-heart" style="color:#ef4444"></i> <b>Kamran Mohsin</b> for the Ummah</span>
+          <span>Contact me for update: +92 3046942398</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div id="waterCelebrationModal" class="celebration-modal" style="display:none;">
+      <div class="celebration-card">
+        <div class="celebration-badge">✦ ALHAMDULILLAH ✦</div>
+        <div class="celebration-icon" style="color:#38bdf8;"><i class="fa-solid fa-glass-water"></i></div>
+        <h2>Masha'Allah! Hydration Goal Met! 💧</h2>
+        <p>You have successfully drank all 8 cups (2,000ml) of water today. Staying energized and healthy for worship!</p>
+        <button id="refillWaterBtn" class="fast-btn" style="margin-top:16px;width:100%;height:44px;font-size:14px;justify-content:center;">Start Next Round</button>
+      </div>
+    </div>
+    <script src="fasting.js"></script>
+  </body>
+</html>

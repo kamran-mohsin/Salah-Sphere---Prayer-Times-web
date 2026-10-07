@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qadha Tracker & Salat Habit Builder - Salah Sphere</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="qadha.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body>
+    <div class="map">
+      <header>
+        <div class="bar">
+          <div class="nam" onclick="window.location.href='main.html'">
+            <img src="mosque-icon.svg" width="28" height="28" alt="Salah Sphere" />
+            <p>Salah Sphere</p>
+          </div>
+          <nav class="nav-links">
+            <a href="main.html" class="nav-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+            <a href="qadha.html" class="nav-item active"><i class="fa-solid fa-list-check"></i> <span>Qadha Tracker</span></a>
+            <a href="qibla.html" class="nav-item"><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a>
+            <a href="fasting.html" class="nav-item"><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a>
+            <a href="tasbeeh.html" class="nav-item"><i class="fa-solid fa-hands-praying"></i> <span>Zen Tasbeeh & Duas</span></a>
+            <a href="activity.html" class="nav-item"><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a>
+          </nav>
+          <div class="streak-badge">
+            <i class="fa-solid fa-fire"></i>
+            <span id="streakNum">7</span> Days Streak
+          </div>
+        </div>
+      </header>
+      <div class="second">
+        <div class="second-container">
+          <div class="navbar">
+            <div class="mosq">
+              <i class="fa-solid fa-list-check"></i>
+              <div class="row">
+                <h1>Qadha Tracker</h1>
+                <p>Salat Habit Builder</p>
+              </div>
+            </div>
+          </div>
+          <div class="quick-summary">
+            <div class="summary-pill">
+              <span class="pill-label">Total Remaining</span>
+              <b id="totalRemaining">0</b>
+            </div>
+            <div class="summary-pill highlight">
+              <span class="pill-label">Completed Today</span>
+              <b id="todayCompleted">0</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="qadha-container">
+        <section class="calc-strip-card reveal">
+          <div class="calc-strip-top">
+            <div class="calc-strip-title">
+              <i class="fa-solid fa-calculator"></i>
+              <div>
+                <h3>Quick Missed Prayers Calculator</h3>
+                <span>Directly enter missed duration below to distribute across all 5 Farz prayers</span>
+              </div>
+            </div>
+            <div class="calc-total-pill">
+              <span>Total Per Prayer:</span>
+              <b id="calcResultDisplay">0 Prayers</b>
+            </div>
+          </div>
+          <div class="calc-strip-inputs">
+            <div class="calc-input-box">
+              <label>Years</label>
+              <input type="number" id="calcYears" min="0" max="60" value="0" placeholder="0" />
+            </div>
+            <div class="calc-input-box">
+              <label>Months</label>
+              <input type="number" id="calcMonths" min="0" max="11" value="0" placeholder="0" />
+            </div>
+            <div class="calc-input-box">
+              <label>Days</label>
+              <input type="number" id="calcDays" min="0" max="30" value="0" placeholder="0" />
+            </div>
+            <div class="calc-input-box rule-box">
+              <label>Calculation Method</label>
+              <select id="calcGender">
+                <option value="male">Standard (365 days / yr)</option>
+                <option value="female">Accounting for Excuse (~300 days / yr)</option>
+              </select>
+            </div>
+            <button class="apply-calc-btn" id="applyCalcBtn"><i class="fa-solid fa-check"></i> Apply to 5 Prayers</button>
+            <button class="reset-calc-btn" id="resetCalcBtn" title="Reset all counts to 0"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+          </div>
+        </section>
+        <section class="overview-grid">
+          <div class="stat-box primary">
+            <div class="stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Remaining Missed Prayers</span>
+              <h2 id="totalCountDisplay">0</h2>
+              <span class="stat-desc">Total across 5 obligatory Farz prayers</span>
+            </div>
+          </div>
+          <div class="stat-box success">
+            <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Total Repaid (Completed)</span>
+              <h2 id="totalRepaidDisplay">0</h2>
+              <span class="stat-desc">Prayers you have successfully made up</span>
+            </div>
+          </div>
+          <div class="stat-box warning">
+            <div class="stat-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="stat-info">
+              <span class="stat-title">Daily Repayment Target</span>
+              <div class="target-row">
+                <button class="target-btn" id="decTarget">-</button>
+                <b id="targetDisplay">5</b>
+                <button class="target-btn" id="incTarget">+</button>
+                <span class="target-sub">Salah / Day</span>
+              </div>
+              <span class="stat-desc" id="estDaysText">Estimated: ~0 days to complete</span>
+            </div>
+          </div>
+        </section>
+        <section class="progress-card">
+          <div class="progress-head">
+            <div class="progress-title">
+              <i class="fa-solid fa-chart-line"></i>
+              <b>Overall Repayment Progress</b>
+            </div>
+            <span class="progress-pct" id="progressPctText">0%</span>
+          </div>
+          <div class="qadha-bar-track">
+            <div class="qadha-bar-fill" id="qadhaBarFill"></div>
+          </div>
+        </section>
+        <div class="section-title">
+          <div class="title-left">
+            <span class="badge-tag">✦ 5 Obligatory Farz Prayers</span>
+            <h2>Individual Prayer Counters</h2>
+          </div>
+        </div>
+        <section class="prayer-cards-grid reveal">
+          <div class="qadha-card" data-prayer="fajr">
+            <div class="q-card-head">
+              <div class="q-icon fajr-ic"><i class="fa-solid fa-cloud-sun"></i></div>
+              <div class="q-name">
+                <h3>Fajr</h3>
+                <span>2 Rak'ah Fardh</span>
+              </div>
+              <span class="done-tag" id="done-fajr">Today: 0</span>
+            </div>
+            <div class="q-count-display">
+              <span class="q-num" id="count-fajr">0</span>
+              <span class="q-lbl">Missed</span>
+            </div>
+            <div class="q-actions">
+              <button class="btn-step dec-btn" data-prayer="fajr" title="Completed 1 Qadha"><i class="fa-solid fa-check"></i> Made Up</button>
+              <button class="btn-mini inc-btn" data-prayer="fajr" title="Add 1 Missed">+1</button>
+              <button class="btn-mini add-five-btn" data-prayer="fajr" title="Add 5 Missed">+5</button>
+            </div>
+          </div>
+          <div class="qadha-card" data-prayer="dhuhr">
+            <div class="q-card-head">
+              <div class="q-icon dhuhr-ic"><i class="fa-regular fa-sun"></i></div>
+              <div class="q-name">
+                <h3>Dhuhr</h3>
+                <span>4 Rak'ah Fardh</span>
+              </div>
+              <span class="done-tag" id="done-dhuhr">Today: 0</span>
+            </div>
+            <div class="q-count-display">
+              <span class="q-num" id="count-dhuhr">0</span>
+              <span class="q-lbl">Missed</span>
+            </div>
+            <div class="q-actions">
+              <button class="btn-step dec-btn" data-prayer="dhuhr" title="Completed 1 Qadha"><i class="fa-solid fa-check"></i> Made Up</button>
+              <button class="btn-mini inc-btn" data-prayer="dhuhr" title="Add 1 Missed">+1</button>
+              <button class="btn-mini add-five-btn" data-prayer="dhuhr" title="Add 5 Missed">+5</button>
+            </div>
+          </div>
+          <div class="qadha-card" data-prayer="asr">
+            <div class="q-card-head">
+              <div class="q-icon asr-ic"><i class="fa-solid fa-cloud-sun"></i></div>
+              <div class="q-name">
+                <h3>Asr</h3>
+                <span>4 Rak'ah Fardh</span>
+              </div>
+              <span class="done-tag" id="done-asr">Today: 0</span>
+            </div>
+            <div class="q-count-display">
+              <span class="q-num" id="count-asr">0</span>
+              <span class="q-lbl">Missed</span>
+            </div>
+            <div class="q-actions">
+              <button class="btn-step dec-btn" data-prayer="asr" title="Completed 1 Qadha"><i class="fa-solid fa-check"></i> Made Up</button>
+              <button class="btn-mini inc-btn" data-prayer="asr" title="Add 1 Missed">+1</button>
+              <button class="btn-mini add-five-btn" data-prayer="asr" title="Add 5 Missed">+5</button>
+            </div>
+          </div>
+          <div class="qadha-card" data-prayer="maghrib">
+            <div class="q-card-head">
+              <div class="q-icon maghrib-ic"><i class="fa-solid fa-cloud-moon"></i></div>
+              <div class="q-name">
+                <h3>Maghrib</h3>
+                <span>3 Rak'ah Fardh</span>
+              </div>
+              <span class="done-tag" id="done-maghrib">Today: 0</span>
+            </div>
+            <div class="q-count-display">
+              <span class="q-num" id="count-maghrib">0</span>
+              <span class="q-lbl">Missed</span>
+            </div>
+            <div class="q-actions">
+              <button class="btn-step dec-btn" data-prayer="maghrib" title="Completed 1 Qadha"><i class="fa-solid fa-check"></i> Made Up</button>
+              <button class="btn-mini inc-btn" data-prayer="maghrib" title="Add 1 Missed">+1</button>
+              <button class="btn-mini add-five-btn" data-prayer="maghrib" title="Add 5 Missed">+5</button>
+            </div>
+          </div>
+          <div class="qadha-card" data-prayer="isha">
+            <div class="q-card-head">
+              <div class="q-icon isha-ic"><i class="fa-solid fa-star-and-crescent"></i></div>
+              <div class="q-name">
+                <h3>Isha</h3>
+                <span>4 Rak'ah Fardh</span>
+              </div>
+              <span class="done-tag" id="done-isha">Today: 0</span>
+            </div>
+            <div class="q-count-display">
+              <span class="q-num" id="count-isha">0</span>
+              <span class="q-lbl">Missed</span>
+            </div>
+            <div class="q-actions">
+              <button class="btn-step dec-btn" data-prayer="isha" title="Completed 1 Qadha"><i class="fa-solid fa-check"></i> Made Up</button>
+              <button class="btn-mini inc-btn" data-prayer="isha" title="Add 1 Missed">+1</button>
+              <button class="btn-mini add-five-btn" data-prayer="isha" title="Add 5 Missed">+5</button>
+            </div>
+          </div>
+        </section>
+        <section class="habit-section reveal">
+          <div class="habit-card">
+            <div class="habit-header">
+              <div class="habit-title">
+                <span class="badge-tag">✦ Daily Habit Builder</span>
+                <h3>Weekly Salat Consistency Grid</h3>
+              </div>
+              <span class="habit-streak"><i class="fa-solid fa-fire"></i> Maintain 5/5 Daily</span>
+            </div>
+            <p class="habit-sub">Click any prayer dot to mark it prayed today. Building consistency prevents future Qadha!</p>
+            <div class="week-table-wrap">
+              <div class="week-row head-row">
+                <span class="day-col">Day</span>
+                <span>Fajr</span>
+                <span>Dhuhr</span>
+                <span>Asr</span>
+                <span>Maghrib</span>
+                <span>Isha</span>
+                <span>Status</span>
+              </div>
+              <div id="weekRowsContainer"></div>
+            </div>
+          </div>
+        </section>
+        <div id="weekCelebrationModal" class="celebration-modal" style="display:none;">
+          <div class="celebration-card">
+            <div class="celebration-badge">✦ MA SHA ALLAH ✦</div>
+            <div class="celebration-icon"><i class="fa-solid fa-award"></i></div>
+            <h2>Masha'Allah! Week Completed! 🎉</h2>
+            <p>You have successfully performed all 35 prayers this week! May Allah accept your steadfastness and grant you barakah.</p>
+            <div class="celebration-timer">Resetting ticks for the new week...</div>
+            <button id="nextWeekBtn" class="btn-step" style="margin-top:16px;width:100%;height:44px;font-size:14px;">Start Next Week</button>
+          </div>
+        </div>
+        <section class="hadith-card reveal">
+          <div class="hadith-top">
+            <span class="hadith-badge"><i class="fa-solid fa-book-open"></i> Virtues of Repentance</span>
+            <span class="hadith-src">Sahih Muslim</span>
+          </div>
+          <div class="hadith-arabic">مَنْ نَسِيَ صَلَاةً أَوْ نَامَ عَنْهَا فَكَفَّارَتُهَا أَنْ يُصَلِّيَهَا إِذَا ذَكَرَهَا</div>
+          <p class="hadith-text">"Whoever forgets a prayer or sleeps through it, the expiation for it is to pray it as soon as he remembers it."</p>
+          <div class="hadith-footer">
+            <span class="hadith-narrator"><i class="fa-solid fa-user"></i> Narrated by Anas ibn Malik (R.A)</span>
+          </div>
+        </section>
+        <footer class="dash-footer">
+          <div class="footer-links">
+          <span>Salah Sphere © 2026</span>
+          <span>Developed with <i class="fa-solid fa-heart" style="color:#ef4444"></i> <b>Kamran Mohsin</b> for the Ummah</span>
+          <span>Contact me for update: +92 3046942398</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="qadha.js"></script>
+  </body>
+</html>

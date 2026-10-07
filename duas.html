@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zen Tasbeeh & Duas - Salah Sphere</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="tasbeeh.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body>
+    <div class="map">
+      <header>
+        <div class="bar">
+          <div class="nam" onclick="window.location.href='main.html'">
+            <img src="mosque-icon.svg" width="28" height="28" alt="Salah Sphere" />
+            <p>Salah Sphere</p>
+          </div>
+          <nav class="nav-links">
+            <a href="main.html" class="nav-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+            <a href="qadha.html" class="nav-item"><i class="fa-solid fa-list-check"></i> <span>Qadha Tracker</span></a>
+            <a href="qibla.html" class="nav-item"><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a>
+            <a href="fasting.html" class="nav-item"><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a>
+            <a href="tasbeeh.html" class="nav-item active"><i class="fa-solid fa-hands-praying"></i> <span>Zen Tasbeeh & Duas</span></a>
+          </nav>
+          <div class="streak-badge">
+            <i class="fa-solid fa-gem"></i>
+            <span id="totalLifetimeDhikrBadge">0</span> Total Zikr
+          </div>
+        </div>
+      </header>
+      <div class="second">
+        <div class="second-container">
+          <div class="navbar">
+            <div class="mosq">
+              <i class="fa-solid fa-hands-praying"></i>
+              <div class="row">
+                <h1>Zen Tasbeeh & Duas</h1>
+                <p>Digital Dhikr Counter & Authentic Supplications</p>
+              </div>
+            </div>
+          </div>
+          <div class="quick-summary">
+            <div class="summary-pill">
+              <span class="pill-label">Active Zikr</span>
+              <b id="summaryActiveZikr">SubhanAllah</b>
+            </div>
+            <div class="summary-pill">
+              <span class="pill-label">Sound Mode</span>
+              <b id="summarySoundMode">Olive Bead Click</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tasbeeh-container">
+        <section class="zen-hero-card reveal">
+          <div class="zen-top-row">
+            <div class="zen-title-wrap">
+              <span class="badge-tag">✦ SACRED SPIRITUAL SANCTUARY</span>
+              <h2>Interactive Zen Tasbeeh</h2>
+            </div>
+            <div class="zen-controls-top">
+              <div class="sound-selector">
+                <i class="fa-solid fa-volume-high"></i>
+                <select id="soundTypeSelect" class="zen-select">
+                  <option value="bead">Olive Bead Click</option>
+                  <option value="bell">Celestial Bell</option>
+                  <option value="drop">Crystal Drop</option>
+                  <option value="mute">Silent (Vibrate)</option>
+                </select>
+              </div>
+              <div class="target-selector">
+                <span class="target-lbl">Target:</span>
+                <button class="target-btn active" data-target="33">33</button>
+                <button class="target-btn" data-target="100">100</button>
+                <button class="target-btn" data-target="1000">1000</button>
+                <button class="target-btn" data-target="0">∞</button>
+              </div>
+            </div>
+          </div>
+          <div class="zikr-picker-carousel" id="zikrListCarousel"></div>
+          <div class="zen-counter-core">
+            <div class="aura-outer-ring">
+              <svg class="aura-progress-svg" viewBox="0 0 260 260">
+                <circle class="aura-bg-circle" cx="130" cy="130" r="115"></circle>
+                <circle class="aura-fill-circle" id="auraFillCircle" cx="130" cy="130" r="115"></circle>
+              </svg>
+              <button class="zen-tap-button" id="zenTapBtn" title="Click or tap to count Zikr (Press Spacebar)">
+                <div class="zen-tap-ripple" id="zenTapRipple"></div>
+                <div class="zen-arabic-display" id="activeZikrArabic">سُبْحَانَ اللَّهِ</div>
+                <div class="zen-count-number" id="zenCountDisplay">0</div>
+                <div class="zen-tap-hint">TAP TO REPEAT</div>
+                <div class="zen-round-info" id="zenRoundDisplay">Lap 1 • Target: 33</div>
+              </button>
+            </div>
+            <div class="zen-side-actions">
+              <button class="action-circle-btn reset-btn" id="resetActiveCounterBtn" title="Reset Counter">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Reset</span>
+              </button>
+              <button class="action-circle-btn sound-toggle-btn" id="soundToggleBtn" title="Sound Feedback">
+                <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                <span>Audio</span>
+              </button>
+              <button class="action-circle-btn speak-zikr-btn" id="speakZikrBtn" title="Listen Pronunciation">
+                <i class="fa-solid fa-headphones"></i>
+                <span>Voice</span>
+              </button>
+            </div>
+          </div>
+          <div class="active-zikr-details">
+            <h3 id="activeZikrEnglishTitle">SubhanAllah</h3>
+            <p class="trans-text" id="activeZikrTrans">"Glory be to Allah"</p>
+            <p class="meaning-text" id="activeZikrMeaning">Transliteration: Subhānallāh — Purifying Allah from any imperfection.</p>
+            <p class="urdu-text" id="activeZikrUrdu">اللہ پاک ہے اور ہر عیب سے پاک ہے۔</p>
+          </div>
+        </section>
+        <section class="zikr-catalog-section reveal">
+          <div class="sec-head">
+            <div class="sec-left">
+              <span class="badge-tag">✦ COMPLETE DHIKR SUITE</span>
+              <h3>Multiple Zikr Counters</h3>
+            </div>
+            <button class="reset-all-zikr-btn" id="resetAllZikrsBtn"><i class="fa-solid fa-trash-can"></i> Reset All Counters</button>
+          </div>
+          <div class="zikr-cards-grid" id="zikrCardsGrid"></div>
+        </section>
+        <section class="duas-library-section reveal">
+          <div class="sec-head">
+            <div class="sec-left">
+              <span class="badge-tag">✦ SACRED TREASURY</span>
+              <h3>Authentic Daily Duas & Supplications</h3>
+            </div>
+          </div>
+          <div class="duas-filter-bar">
+            <div class="search-dua-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="duaSearchInput" placeholder="Search Duas by keyword, topic or translation..." />
+            </div>
+            <div class="dua-category-pills">
+              <button class="cat-pill active" data-cat="all">All Duas</button>
+              <button class="cat-pill" data-cat="morning">Morning & Evening</button>
+              <button class="cat-pill" data-cat="protection">Protection & Peace</button>
+              <button class="cat-pill" data-cat="forgiveness">Forgiveness</button>
+              <button class="cat-pill" data-cat="health">Health & Shifa</button>
+              <button class="cat-pill" data-cat="success">Success & Rizq</button>
+            </div>
+          </div>
+          <div class="duas-catalog-grid" id="duasCatalogGrid"></div>
+        </section>
+        <footer class="dash-footer">
+          <div class="footer-links">
+            <span>Salah Sphere © 2026</span>
+            <span>•</span>
+            <span>Developed with <i class="fa-solid fa-heart" style="color:#ef4444"></i> Kamran Mohsin for the Ummah</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div id="targetReachedModal" class="celebration-modal" style="display:none;">
+      <div class="celebration-card">
+        <div class="celebration-badge">✦ ALHAMDULILLAH ✦</div>
+        <div class="celebration-icon"><i class="fa-solid fa-heart-circle-check"></i></div>
+        <h2>Target Completed! 📿</h2>
+        <p id="targetModalText">You have completed 33 repetitions of SubhanAllah! May Allah accept your remembrance.</p>
+        <button id="closeTargetModalBtn" class="btn-step" style="margin-top:16px;width:100%;height:44px;font-size:14px;">Continue Next Round</button>
+      </div>
+    </div>
+    <script src="tasbeeh.js"></script>
+  </body>
+</html>

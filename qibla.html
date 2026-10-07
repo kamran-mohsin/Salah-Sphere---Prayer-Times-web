@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Qibla Finder - Salah Sphere</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="qibla.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="map">
+      <header>
+        <div class="bar">
+          <div class="nam" onclick="window.location.href = 'main.html'">
+            <img
+              src="mosque-icon.svg"
+              width="28"
+              height="28"
+              alt="Salah Sphere"
+            />
+            <p>Salah Sphere</p>
+          </div>
+          <nav class="nav-links">
+            <a href="main.html" class="nav-item"
+              ><i class="fa-solid fa-house"></i> <span>Dashboard</span></a
+            >
+            <a href="qadha.html" class="nav-item"
+              ><i class="fa-solid fa-list-check"></i>
+              <span>Qadha Tracker</span></a
+            >
+            <a href="qibla.html" class="nav-item active"
+              ><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a
+            >
+            <a href="fasting.html" class="nav-item"
+              ><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a
+            >
+            <a href="tasbeeh.html" class="nav-item"
+              ><i class="fa-solid fa-hands-praying"></i>
+              <span>Zen Tasbeeh & Duas</span></a
+            >
+            <a href="activity.html" class="nav-item"
+              ><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a
+            >
+          </nav>
+          <div class="detect" id="qiblaDetectBtn">
+            <i class="fa-solid fa-location-dot"></i>
+            <button class="fetch">Auto Detect</button>
+          </div>
+        </div>
+      </header>
+      <div class="second">
+        <div class="second-container">
+          <div class="navbar">
+            <div class="mosq">
+              <i class="fa-solid fa-compass"></i>
+              <div class="row">
+                <h1>Smart Qibla Finder</h1>
+                <p>Live Kaaba Direction</p>
+              </div>
+            </div>
+          </div>
+          <div class="search">
+            <input
+              type="text"
+              id="qiblaSearchInput"
+              value="Islamabad"
+              placeholder="Search any City or Country..."
+            />
+            <div class="cut" id="qiblaSearchCut">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="glass" id="qiblaSearchBtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+          <div class="location-pill">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="detectedCityDisplay">Islamabad</span>
+          </div>
+        </div>
+      </div>
+      <div class="qibla-container">
+        <section class="quick-cities-bar reveal">
+          <span class="quick-cities-label"
+            ><i class="fa-solid fa-earth-americas"></i> Popular Cities:</span
+          >
+          <div class="cities-pills-list">
+            <button class="city-pill-btn" data-city="Makkah">🕋 Makkah</button>
+            <button class="city-pill-btn active" data-city="Islamabad">
+              🇵🇰 Islamabad
+            </button>
+            <button class="city-pill-btn" data-city="Lahore">🇵🇰 Lahore</button>
+            <button class="city-pill-btn" data-city="Karachi">
+              🇵🇰 Karachi
+            </button>
+            <button class="city-pill-btn" data-city="Dubai">🇦🇪 Dubai</button>
+            <button class="city-pill-btn" data-city="Istanbul">
+              🇹🇷 Istanbul
+            </button>
+            <button class="city-pill-btn" data-city="London">🇬🇧 London</button>
+            <button class="city-pill-btn" data-city="New_York">
+              🇺🇸 New York
+            </button>
+          </div>
+        </section>
+        <section class="alignment-banner reveal" id="alignBanner">
+          <div class="align-indicator">
+            <i class="fa-solid fa-arrow-turn-up" id="turnIcon"></i>
+            <span id="alignStatusText"
+              >Align your device towards the Kaaba marker</span
+            >
+          </div>
+          <span class="bearing-badge" id="bannerBearing">256.4° WSW</span>
+        </section>
+        <section class="compass-main-card reveal">
+          <div class="compass-wrapper">
+            <div class="compass-outer-ring">
+              <div class="compass-ticks" id="compassTicks"></div>
+              <div class="cardinal north">N</div>
+              <div class="cardinal east">E</div>
+              <div class="cardinal south">S</div>
+              <div class="cardinal west">W</div>
+              <div class="compass-disc" id="compassDisc">
+                <div class="kaaba-target-pointer" id="kaabaPointer">
+                  <div class="kaaba-marker-icon">
+                    <i class="fa-solid fa-kaaba"></i>
+                    <span>QIBLA</span>
+                  </div>
+                </div>
+                <div class="compass-needle" id="compassNeedle">
+                  <div class="needle-north"></div>
+                  <div class="needle-south"></div>
+                </div>
+                <div class="compass-center-cap">
+                  <i class="fa-solid fa-kaaba"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="compass-side-details">
+            <div class="info-card-qibla primary">
+              <span class="info-lbl">Kaaba Direction (Bearing)</span>
+              <div class="info-val-row">
+                <b id="qiblaAngle">256.4°</b>
+                <span class="dir-badge" id="qiblaDirectionText">WSW</span>
+              </div>
+              <span class="info-sub">Measured clockwise from True North</span>
+            </div>
+            <div class="info-card-qibla">
+              <span class="info-lbl">Straight-Line Distance</span>
+              <div class="info-val-row">
+                <b id="kaabaDistance">3,540</b>
+                <span class="unit-badge">km to Makkah</span>
+              </div>
+              <span class="info-sub">Great-circle Haversine navigation</span>
+            </div>
+            <div class="info-card-qibla">
+              <span class="info-lbl">Target City & Coordinates</span>
+              <div class="coords-row">
+                <div>
+                  <span class="coord-tag">LAT</span>
+                  <b id="userLat">33.6844° N</b>
+                </div>
+                <div>
+                  <span class="coord-tag">LON</span>
+                  <b id="userLon">73.0479° E</b>
+                </div>
+              </div>
+              <span class="info-sub" id="currentLocationName"
+                >Islamabad, Pakistan</span
+              >
+            </div>
+            <div class="sensor-card">
+              <div class="sensor-status">
+                <span class="sensor-dot" id="sensorDot"></span>
+                <span id="sensorLabel">Sensor: Ready / Manual</span>
+              </div>
+              <button class="sensor-btn" id="sensorToggleBtn">
+                <i class="fa-solid fa-mobile-screen"></i> Enable Live Compass
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="simulator-card reveal">
+          <div class="sim-header">
+            <div class="sim-title">
+              <i class="fa-solid fa-sliders"></i>
+              <b>Compass Heading Simulator (For Desktop & Testing)</b>
+            </div>
+            <span class="sim-deg" id="simHeadingDisplay">Heading: 0°</span>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="360"
+            value="0"
+            class="sim-slider"
+            id="headingSlider"
+          />
+          <div class="sim-ticks">
+            <span>0° (N)</span>
+            <span>90° (E)</span>
+            <span>180° (S)</span>
+            <span>270° (W)</span>
+            <span>360° (N)</span>
+          </div>
+        </section>
+        <section class="qibla-grid-knowledge reveal">
+          <div class="q-info-box">
+            <div class="q-box-top">
+              <i class="fa-solid fa-mosque"></i>
+              <h3>The Holy Kaaba</h3>
+            </div>
+            <p>
+              The Sacred House located in Makkah, Saudi Arabia (21.4225° N,
+              39.8262° E). It is the universal focal point towards which all
+              Muslims face during every Salah.
+            </p>
+          </div>
+          <div class="q-info-box">
+            <div class="q-box-top">
+              <i class="fa-solid fa-book-quran"></i>
+              <h3>Divine Command</h3>
+            </div>
+            <p class="ayah-qibla">
+              "فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ۚ وَحَيْثُ مَا
+              كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ"
+            </p>
+            <p class="ayah-sub">
+              "Turn your face toward the Sacred Mosque; wherever you are, turn
+              your faces toward it." (Al-Baqarah 2:144)
+            </p>
+          </div>
+          <div class="q-info-box">
+            <div class="q-box-top">
+              <i class="fa-solid fa-compass-drafting"></i>
+              <h3>Calibration Advice</h3>
+            </div>
+            <p>
+              For accurate results on mobile, hold your phone flat horizontally
+              away from metal objects or electronic devices. Wave it gently in
+              an infinity '∞' figure-8 motion to calibrate magnetic sensors.
+            </p>
+          </div>
+        </section>
+        <footer class="dash-footer">
+          <div class="footer-links">
+            <span>Salah Sphere © 2026</span>
+            <span >Developed with
+              <i class="fa-solid fa-heart" style="color: #ef4444"></i>
+              <b>Kamran Mohsin</b> for the Ummah</span>
+            <span>Contact me for update: +92 3046942398</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="qibla.js"></script>
+  </body>
+</html>
