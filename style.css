@@ -1,16 +1,24 @@
-*{
+*, *::before, *::after{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 body{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 .map{
     min-height: 100vh;
     width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     background: radial-gradient(circle at 50% 0%, #0d3527 0%, #0F172A 55%, #080d18 100%);
     color: #FFFFFF;
     display: flex;
@@ -21,7 +29,8 @@ body{
 }
 header{
     width: 100%;
-    height: 72px;
+    min-height: 72px;
+    height: auto;
     background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -175,9 +184,20 @@ header{
     background: transparent;
     position: relative;
 }
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    max-width: 100%;
+}
 .search input{
-    height: 1.4rem;
+    height: 2.6rem;
     width: 22rem;
+    max-width: 100%;
+    flex: 1;
+    min-width: 0;
     color: #ffffff;
     background-color: #1E293B;
     font-size: 15px;
@@ -261,7 +281,8 @@ header{
     transition: all 0.3s ease;
 }
 .location {
-    width: 60rem;
+    width: 90%;
+    max-width: 60rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -393,17 +414,21 @@ header{
     letter-spacing: 0.5px;
 }
 .curve{
+    width: 90%;
+    max-width: 60rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .pray{
     height: 250px;
-    width: 30rem;
+    flex: 1;
+    max-width: 30rem;
+    width: 100%;
     background-color: #065F46;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-right: 14rem; */
     border-radius: 1rem;
     padding: 20px;
     border-top-right-radius: 0%;
@@ -411,7 +436,9 @@ header{
 }
 .sun{
     height: 250px;
-    width: 30rem;
+    flex: 1;
+    max-width: 30rem;
+    width: 100%;
     background-color: #065F46;
     padding: 20px;
     border-radius: 1rem;
@@ -566,8 +593,13 @@ header{
     transition: all 0.3s ease-in-out;
 }
 .prayTimes{
+    width: 90%;
+    max-width: 1250px;
     display: flex;
-    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 .prayTimes .active-prayer {
     border-color: #22c55e !important;
@@ -1115,12 +1147,33 @@ header{
     .center-grid {
         grid-template-columns: 1fr;
     }
+    .location {
+        width: 95%;
+        gap: 1rem;
+    }
+    .curve {
+        width: 95%;
+    }
 }
+
 @media (max-width: 860px) {
+    .map {
+        gap: 1.8rem;
+        padding-bottom: 3rem;
+    }
+    header {
+        height: auto;
+        padding: 8px 0;
+    }
     .bar {
+        width: 92%;
         flex-wrap: wrap;
         gap: 12px;
-        padding: 10px 0;
+        padding: 6px 0;
+        justify-content: space-between;
+    }
+    .nam p {
+        font-size: 18px;
     }
     .nav-links {
         order: 3;
@@ -1128,6 +1181,7 @@ header{
         overflow-x: auto;
         justify-content: flex-start;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
         padding: 6px;
     }
     .nav-links::-webkit-scrollbar {
@@ -1138,38 +1192,218 @@ header{
         padding: 6px 12px;
         font-size: 12px;
     }
-    .prayTimes {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
     .second-container {
+        width: 92%;
         flex-direction: column;
         align-items: stretch;
+        gap: 14px;
+    }
+    .search {
+        width: 100%;
+    }
+    .search input {
+        width: 100%;
+        flex: 1;
+        min-width: 0;
+    }
+    .clock {
+        align-self: center;
+    }
+    /* Location mobile */
+    .location {
+        width: 92%;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    .loc-col {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .city-col {
+        order: -1;
+        align-items: center;
+        text-align: center;
+    }
+    .location p {
+        font-size: 32px;
+        padding: 6px 18px;
+    }
+    /* Curve & Sun Trajectory mobile */
+    .curve {
+        width: 92%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .pray {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 240px;
+        border-radius: 1rem !important;
+        padding: 20px 16px;
+    }
+    .divide {
+        display: none;
+    }
+    .sun {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 240px;
+        border-radius: 1rem !important;
+        padding: 20px 16px;
+    }
+    /* Prayer times */
+    .prayTimes {
+        width: 92%;
         gap: 12px;
+        justify-content: center;
+    }
+    .fajr, .duhr, .asr, .mgrib, .isha {
+        height: 130px;
+        width: 130px;
+    }
+    .scroll-section {
+        width: 92%;
     }
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 520px) {
+    .map {
+        gap: 1.5rem;
+    }
+    .bar {
+        width: 94%;
+        gap: 8px;
+    }
+    .nam img {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+    .nam p {
+        font-size: 16px;
+    }
+    .detect {
+        height: 2rem;
+        padding: 0 10px;
+    }
+    .detect button {
+        font-size: 11px;
+    }
+    .mosq i {
+        font-size: 30px;
+    }
+    .mosq h1 {
+        font-size: 18px;
+    }
+    .mosq p {
+        font-size: 11px;
+    }
+    .location p {
+        font-size: 26px;
+        padding: 4px 14px;
+    }
+    .location time, .islamic-date {
+        font-size: 12px;
+        white-space: normal;
+    }
+    .prayer-status-tag {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+    .current-prayer-btn {
+        padding: 5px 14px;
+        font-size: 12px;
+    }
+    .current-prayer-btn .current-name {
+        font-size: 13px;
+    }
+    .pray h2 {
+        font-size: 30px;
+    }
+    .pray time {
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+    .sun-header p {
+        font-size: 14px;
+    }
+    .sun-svg {
+        height: 110px;
+    }
+    /* 5 Prayer Cards 2 per row */
+    .prayTimes {
+        width: 94%;
+        gap: 10px;
+        justify-content: center;
+    }
     .fajr, .duhr, .asr, .mgrib, .isha {
-        width: 105px;
-        height: 105px;
+        width: calc(50% - 6px);
+        min-width: 120px;
+        max-width: 160px;
+        height: 110px;
+        border-radius: 12px;
+        gap: 0.25rem;
     }
     .fajr h3, .duhr h3, .asr h3, .mgrib h3, .isha h3 {
         font-size: 13px;
     }
-    .pray time {
-        font-size: 40px;
+    .fajr time, .duhr time, .asr time, .mgrib time, .isha time {
+        font-size: 13px;
+    }
+    .fajr i, .duhr i, .asr i, .mgrib i, .isha i {
+        font-size: 18px;
+    }
+    .section-header h2 {
+        font-size: 20px;
+    }
+    .section-header p {
+        font-size: 12px;
+    }
+    .windows-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .window-card {
+        padding: 14px;
+    }
+    .sunnah-card, .calendar-card {
+        padding: 18px 14px;
     }
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .stat-card {
+        padding: 18px 12px;
+    }
+    .stat-num {
+        font-size: 20px;
     }
     .hadith-card {
-        padding: 24px 18px;
+        padding: 20px 14px;
     }
     .hadith-arabic {
-        font-size: 22px;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    .dash-footer {
+        width: 94%;
+        padding: 24px 0 12px;
+    }
+    .footer-quote p {
+        font-size: 14px;
+    }
+    .footer-quote span {
+        font-size: 12px;
+    }
+    .footer-links {
+        font-size: 12px;
+        gap: 6px;
     }
 }
