@@ -4,26 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Islamic Activity Hub - Salah Sphere</title>
-    <meta name="description" content="Daily Islamic challenges, spiritual goals, and mindfulness activities to strengthen your Deen." />
+    <meta
+      name="description"
+      content="Daily Islamic challenges, spiritual goals, and mindfulness activities to strengthen your Deen."
+    />
     <link href="style.css" rel="stylesheet" />
     <link href="activity.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="map">
       <header>
         <div class="bar">
-          <div class="nam" onclick="window.location.href='main.html'">
-            <img src="mosque-icon.svg" width="28" height="28" alt="Salah Sphere" />
+          <div class="nam" onclick="window.location.href = 'index.html'">
+            <img
+              src="mosque-icon.svg"
+              width="28"
+              height="28"
+              alt="Salah Sphere"
+            />
             <p>Salah Sphere</p>
           </div>
           <nav class="nav-links">
-            <a href="main.html" class="nav-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
-            <a href="qadha.html" class="nav-item"><i class="fa-solid fa-list-check"></i> <span>Qadha Tracker</span></a>
-            <a href="qibla.html" class="nav-item"><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a>
-            <a href="fasting.html" class="nav-item"><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a>
-            <a href="tasbeeh.html" class="nav-item"><i class="fa-solid fa-hands-praying"></i> <span>Zen Tasbeeh &amp; Duas</span></a>
-            <a href="activity.html" class="nav-item active"><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a>
+            <a href="index.html" class="nav-item"
+              ><i class="fa-solid fa-house"></i> <span>Dashboard</span></a
+            >
+            <a href="qadha.html" class="nav-item"
+              ><i class="fa-solid fa-list-check"></i>
+              <span>Qadha Tracker</span></a
+            >
+            <a href="qibla.html" class="nav-item"
+              ><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a
+            >
+            <a href="fasting.html" class="nav-item"
+              ><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a
+            >
+            <a href="tasbeeh.html" class="nav-item"
+              ><i class="fa-solid fa-hands-praying"></i>
+              <span>Zen Tasbeeh &amp; Duas</span></a
+            >
+            <a href="activity.html" class="nav-item active"
+              ><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a
+            >
           </nav>
           <div class="streak-badge">
             <i class="fa-solid fa-trophy"></i>
@@ -45,44 +70,97 @@
         </div>
       </div>
       <div class="act-stats-row reveal">
-        <div class="act-stat-card"><i class="fa-solid fa-fire-flame-curved"></i><div><span class="act-stat-num" id="actStreakDisplay">0</span><span class="act-stat-label">Day Streak</span></div></div>
-        <div class="act-stat-card"><i class="fa-solid fa-star"></i><div><span class="act-stat-num" id="actXpDisplay">0</span><span class="act-stat-label">Total XP</span></div></div>
-        <div class="act-stat-card"><i class="fa-solid fa-circle-check"></i><div><span class="act-stat-num" id="actDoneToday">0</span><span class="act-stat-label">Done Today</span></div></div>
-        <div class="act-stat-card"><i class="fa-solid fa-medal"></i><div><span class="act-stat-num" id="actBadgeCount">0</span><span class="act-stat-label">Badges</span></div></div>
+        <div class="act-stat-card">
+          <i class="fa-solid fa-fire-flame-curved"></i>
+          <div>
+            <span class="act-stat-num" id="actStreakDisplay">0</span
+            ><span class="act-stat-label">Day Streak</span>
+          </div>
+        </div>
+        <div class="act-stat-card">
+          <i class="fa-solid fa-star"></i>
+          <div>
+            <span class="act-stat-num" id="actXpDisplay">0</span
+            ><span class="act-stat-label">Total XP</span>
+          </div>
+        </div>
+        <div class="act-stat-card">
+          <i class="fa-solid fa-circle-check"></i>
+          <div>
+            <span class="act-stat-num" id="actDoneToday">0</span
+            ><span class="act-stat-label">Done Today</span>
+          </div>
+        </div>
+        <div class="act-stat-card">
+          <i class="fa-solid fa-medal"></i>
+          <div>
+            <span class="act-stat-num" id="actBadgeCount">0</span
+            ><span class="act-stat-label">Badges</span>
+          </div>
+        </div>
       </div>
       <div class="act-xp-section reveal">
         <div class="act-xp-header">
           <span class="act-xp-label">Today's Progress</span>
-          <span class="act-xp-count"><span id="actTodayXp">0</span> / 100 XP</span>
+          <span class="act-xp-count"
+            ><span id="actTodayXp">0</span> / 100 XP</span
+          >
         </div>
-        <div class="act-xp-bar-outer"><div class="act-xp-bar-inner" id="actXpBarFill"></div></div>
-        <p class="act-xp-tip" id="actXpTip">Complete daily challenges to earn XP and level up your Deen!</p>
+        <div class="act-xp-bar-outer">
+          <div class="act-xp-bar-inner" id="actXpBarFill"></div>
+        </div>
+        <p class="act-xp-tip" id="actXpTip">
+          Complete daily challenges to earn XP and level up your Deen!
+        </p>
       </div>
       <div class="act-section reveal">
         <div class="act-section-header">
           <i class="fa-solid fa-calendar-day"></i>
           <h2>Daily Challenges</h2>
           <span class="act-section-tag">Resets Daily</span>
-          <button id="resetChallengesBtn" class="act-reset-mini-btn" title="Reset ticks for next round"><i class="fa-solid fa-rotate-left"></i> Reset Ticks</button>
+          <button
+            id="resetChallengesBtn"
+            class="act-reset-mini-btn"
+            title="Reset ticks for next round"
+          >
+            <i class="fa-solid fa-rotate-left"></i> Reset Ticks
+          </button>
         </div>
         <div class="act-challenges-grid" id="dailyChallengesGrid"></div>
       </div>
       <div class="act-section reveal">
-        <div class="act-section-header"><i class="fa-solid fa-wind"></i><h2>Mindful Breathing</h2><span class="act-section-tag">Calming</span></div>
+        <div class="act-section-header">
+          <i class="fa-solid fa-wind"></i>
+          <h2>Mindful Breathing</h2>
+          <span class="act-section-tag">Calming</span>
+        </div>
         <div class="act-breathing-card">
           <div class="breath-circle-wrap">
             <div class="breath-circle" id="breathCircle">
               <span class="breath-text" id="breathText">Tap to Start</span>
-              <span class="breath-phase" id="breathPhase">Breathe &amp; Remember Allah</span>
+              <span class="breath-phase" id="breathPhase"
+                >Breathe &amp; Remember Allah</span
+              >
             </div>
           </div>
           <div class="breath-zikr-row">
             <span class="breath-zikr-label">Recite while breathing:</span>
-            <span class="breath-zikr-arabic" id="breathZikrArabic">&#x633;&#x64F;&#x628;&#x652;&#x62D;&#x627;&#x646;&#x064E; &#x627;&#x644;&#x644;&#x064E;&#x651;&#x647;&#x650;</span>
+            <span class="breath-zikr-arabic" id="breathZikrArabic"
+              >&#x633;&#x64F;&#x628;&#x652;&#x62D;&#x627;&#x646;&#x064E;
+              &#x627;&#x644;&#x644;&#x064E;&#x651;&#x647;&#x650;</span
+            >
           </div>
           <div class="breath-controls">
-            <button class="breath-btn" id="breathStartBtn"><i class="fa-solid fa-play"></i> Start Session</button>
-            <button class="breath-btn secondary" id="breathStopBtn" style="display:none"><i class="fa-solid fa-stop"></i> Stop</button>
+            <button class="breath-btn" id="breathStartBtn">
+              <i class="fa-solid fa-play"></i> Start Session
+            </button>
+            <button
+              class="breath-btn secondary"
+              id="breathStopBtn"
+              style="display: none"
+            >
+              <i class="fa-solid fa-stop"></i> Stop
+            </button>
           </div>
           <div class="breath-session-info">
             <span>Rounds: <b id="breathRounds">0</b></span>
@@ -91,42 +169,71 @@
         </div>
       </div>
       <div class="act-section reveal">
-        <div class="act-section-header"><i class="fa-solid fa-brain"></i><h2>Islamic Quiz</h2><span class="act-section-tag">+10 XP per correct</span></div>
+        <div class="act-section-header">
+          <i class="fa-solid fa-brain"></i>
+          <h2>Islamic Quiz</h2>
+          <span class="act-section-tag">+10 XP per correct</span>
+        </div>
         <div class="act-quiz-card" id="quizCard">
           <div class="quiz-question-wrap" id="quizQuestionWrap">
             <p class="quiz-q-num" id="quizQNum">Question 1 of 5</p>
             <p class="quiz-question" id="quizQuestion">Loading...</p>
             <div class="quiz-options" id="quizOptions"></div>
           </div>
-          <div class="quiz-result-wrap" id="quizResultWrap" style="display:none">
+          <div
+            class="quiz-result-wrap"
+            id="quizResultWrap"
+            style="display: none"
+          >
             <div class="quiz-result-icon" id="quizResultIcon"></div>
             <p class="quiz-result-msg" id="quizResultMsg"></p>
-            <button class="act-primary-btn" id="quizNextBtn">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="act-primary-btn" id="quizNextBtn">
+              Next Question <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
-          <div class="quiz-end-wrap" id="quizEndWrap" style="display:none">
+          <div class="quiz-end-wrap" id="quizEndWrap" style="display: none">
             <div class="quiz-end-icon">&#x1F3C6;</div>
             <h3 id="quizEndTitle">Quiz Complete!</h3>
             <p id="quizEndMsg"></p>
-            <button class="act-primary-btn" id="quizRestartBtn"><i class="fa-solid fa-rotate-right"></i> Play Again</button>
+            <button class="act-primary-btn" id="quizRestartBtn">
+              <i class="fa-solid fa-rotate-right"></i> Play Again
+            </button>
           </div>
         </div>
       </div>
       <div class="act-section reveal">
-        <div class="act-section-header"><i class="fa-solid fa-book-open"></i><h2>Spiritual Journal</h2><span class="act-section-tag">+15 XP</span></div>
+        <div class="act-section-header">
+          <i class="fa-solid fa-book-open"></i>
+          <h2>Spiritual Journal</h2>
+          <span class="act-section-tag">+15 XP</span>
+        </div>
         <div class="act-journal-card">
           <p class="journal-prompt" id="journalPrompt">Loading prompt...</p>
-          <textarea class="journal-textarea" id="journalTextarea" placeholder="Write your thoughts here..." maxlength="300"></textarea>
+          <textarea
+            class="journal-textarea"
+            id="journalTextarea"
+            placeholder="Write your thoughts here..."
+            maxlength="300"
+          ></textarea>
           <div class="journal-actions">
             <span class="journal-chars" id="journalChars">0 / 300</span>
-            <button class="act-primary-btn" id="journalSaveBtn"><i class="fa-solid fa-floppy-disk"></i> Save Reflection (+15 XP)</button>
+            <button class="act-primary-btn" id="journalSaveBtn">
+              <i class="fa-solid fa-floppy-disk"></i> Save Reflection (+15 XP)
+            </button>
           </div>
           <div class="journal-saved-list" id="journalSavedList"></div>
         </div>
       </div>
       <div class="act-section reveal">
-        <div class="act-section-header"><i class="fa-solid fa-hand-holding-heart"></i><h2>Sadaqah &amp; Good Deeds</h2><span class="act-section-tag">+5 XP each</span></div>
+        <div class="act-section-header">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+          <h2>Sadaqah &amp; Good Deeds</h2>
+          <span class="act-section-tag">+5 XP each</span>
+        </div>
         <div class="act-sadaqah-card">
-          <p class="sadaqah-subtitle">Tap to log a good deed - every act of kindness counts!</p>
+          <p class="sadaqah-subtitle">
+            Tap to log a good deed - every act of kindness counts!
+          </p>
           <div class="sadaqah-deeds-grid" id="sadaqahDeedsGrid"></div>
           <div class="sadaqah-total-row">
             <span>Today's Good Deeds:</span>
@@ -135,23 +242,33 @@
         </div>
       </div>
       <div class="act-section reveal">
-        <div class="act-section-header"><i class="fa-solid fa-award"></i><h2>Your Badges</h2><span class="act-section-tag">Achievements</span></div>
+        <div class="act-section-header">
+          <i class="fa-solid fa-award"></i>
+          <h2>Your Badges</h2>
+          <span class="act-section-tag">Achievements</span>
+        </div>
         <div class="act-badges-grid" id="badgesGrid"></div>
       </div>
       <footer class="dash-footer">
         <div class="footer-links">
           <span>Salah Sphere © 2026</span>
-          <span>Developed with <i class="fa-solid fa-heart" style="color:#ef4444"></i> <b>Kamran Mohsin</b> for the Ummah</span>
+          <span
+            >Developed with
+            <i class="fa-solid fa-heart" style="color: #ef4444"></i>
+            <b>Kamran Mohsin</b> for the Ummah</span
+          >
           <span>Contact me for update: +92 3046942398</span>
         </div>
       </footer>
     </div>
-    <div class="act-modal-overlay" id="actCelebModal" style="display:none">
+    <div class="act-modal-overlay" id="actCelebModal" style="display: none">
       <div class="act-modal-box">
         <div class="act-modal-emoji" id="actCelebEmoji">&#x1F389;</div>
         <h2 id="actCelebTitle">Masha Allah!</h2>
         <p id="actCelebMsg">You earned a badge!</p>
-        <button class="act-primary-btn" id="actCelebCloseBtn">Continue <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="act-primary-btn" id="actCelebCloseBtn">
+          Continue <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
     </div>
     <script src="activity.js"></script>
