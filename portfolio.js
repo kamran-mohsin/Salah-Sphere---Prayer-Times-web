@@ -124,7 +124,7 @@ function checkProgress() {
       currentPray = "No Active Prayer";
     }
     isNoPrayer = true;
-    highlightActivePrayer("");
+    highlightActivePrayer(pray ? pray.innerText : "Dhuhr");
   } else if (nowMin >= dMin && nowMin < sMin) {
     updateDynamicProgressBar(d, s, "Dhuhr", "Asr");
     currentPray = "Dhuhr";
@@ -323,6 +323,7 @@ const API = async (city) => {
 
       let nextPrayerName = fin ? fin.name : "Fajr";
       pray.innerText = nextPrayerName;
+      highlightActivePrayer(nextPrayerName);
     }
     updateRemaining();
     timer = setInterval(updateRemaining, 1000);
@@ -344,10 +345,11 @@ function highlightActivePrayer(prayerName) {
     Maghrib: ".mgrib",
     Isha: ".isha",
   };
+  const target = prayerName || (pray && pray.innerText ? pray.innerText.trim() : "");
   document.querySelectorAll(".prayTimes > div").forEach((card) => {
     card.classList.remove("active-prayer");
   });
-  const selector = prayerClasses[prayerName];
+  const selector = prayerClasses[target];
   if (selector) {
     const card = document.querySelector(selector);
     if (card) {

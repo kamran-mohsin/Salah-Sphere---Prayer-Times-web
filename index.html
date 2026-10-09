@@ -16,16 +16,35 @@
       <header>
         <div class="bar">
           <div class="nam">
-            <img src="mosque-icon.svg" width="28" height="28" alt="Salah Sphere" />
+            <img
+              src="mosque-icon.svg"
+              width="28"
+              height="28"
+              alt="Salah Sphere"
+            />
             <p>Salah Sphere</p>
           </div>
           <nav class="nav-links">
-            <a href="main.html" class="nav-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
-            <a href="qadha.html" class="nav-item"><i class="fa-solid fa-list-check"></i> <span>Qadha Tracker</span></a>
-            <a href="qibla.html" class="nav-item"><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a>
-            <a href="fasting.html" class="nav-item"><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a>
-            <a href="tasbeeh.html" class="nav-item"><i class="fa-solid fa-hands-praying"></i> <span>Zen Tasbeeh & Duas</span></a>
-            <a href="activity.html" class="nav-item"><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a>
+            <a href="main.html" class="nav-item active"
+              ><i class="fa-solid fa-house"></i> <span>Dashboard</span></a
+            >
+            <a href="qadha.html" class="nav-item"
+              ><i class="fa-solid fa-list-check"></i>
+              <span>Qadha Tracker</span></a
+            >
+            <a href="qibla.html" class="nav-item"
+              ><i class="fa-solid fa-compass"></i> <span>Qibla Finder</span></a
+            >
+            <a href="fasting.html" class="nav-item"
+              ><i class="fa-solid fa-moon"></i> <span>Smart Fasting</span></a
+            >
+            <a href="tasbeeh.html" class="nav-item"
+              ><i class="fa-solid fa-hands-praying"></i>
+              <span>Zen Tasbeeh & Duas</span></a
+            >
+            <a href="activity.html" class="nav-item"
+              ><i class="fa-solid fa-bolt"></i> <span>Activity Hub</span></a
+            >
           </nav>
           <div class="detect">
             <i class="fa-solid fa-location-dot"></i>
@@ -61,7 +80,9 @@
       </div>
       <div class="location">
         <div class="loc-col date-col">
-          <div class="col-icon"><i class="fa-regular fa-calendar-days"></i></div>
+          <div class="col-icon">
+            <i class="fa-regular fa-calendar-days"></i>
+          </div>
           <div class="col-info">
             <span class="col-tag">Gregorian</span>
             <time>Wednesday, 23 September 2026</time>
@@ -110,22 +131,69 @@
             <div class="sun-arc-wrapper">
               <svg class="sun-svg" viewBox="0 0 300 130">
                 <defs>
-                  <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient
+                    id="sunGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
                     <stop offset="0%" stop-color="#F59E0B" />
                     <stop offset="50%" stop-color="#FCD34D" />
                     <stop offset="100%" stop-color="#F97316" />
                   </linearGradient>
-                  <filter id="sunGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <filter
+                    id="sunGlow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
                     <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    <feComposite
+                      in="SourceGraphic"
+                      in2="blur"
+                      operator="over"
+                    />
                   </filter>
                 </defs>
-                <path id="sun-curve-bg" d="M 30,110 Q 150,15 270,110" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="6,6" stroke-width="2.5" />
-                  <path id="sun-curve-progress" d="M 30,110 Q 150,15 270,110" fill="none" stroke="url(#sunGradient)" stroke-width="3.5" stroke-linecap="round" />
-                <line x1="15" y1="110" x2="285" y2="110" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="3,3" />
+                <path
+                  id="sun-curve-bg"
+                  d="M 30,110 Q 150,15 270,110"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.2)"
+                  stroke-dasharray="6,6"
+                  stroke-width="2.5"
+                />
+                <path
+                  id="sun-curve-progress"
+                  d="M 30,110 Q 150,15 270,110"
+                  fill="none"
+                  stroke="url(#sunGradient)"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="15"
+                  y1="110"
+                  x2="285"
+                  y2="110"
+                  stroke="rgba(255,255,255,0.15)"
+                  stroke-width="1.5"
+                  stroke-dasharray="3,3"
+                />
                 <g id="moving-sun-group" transform="translate(30, 110)">
-                  <circle r="13" fill="rgba(245, 158, 11, 0.35)" filter="url(#sunGlow)"></circle>
-                  <circle r="7.5" fill="#FBBF24" stroke="#FFF" stroke-width="2.5"></circle>
+                  <circle
+                    r="13"
+                    fill="rgba(245, 158, 11, 0.35)"
+                    filter="url(#sunGlow)"
+                  ></circle>
+                  <circle
+                    r="7.5"
+                    fill="#FBBF24"
+                    stroke="#FFF"
+                    stroke-width="2.5"
+                  ></circle>
                 </g>
               </svg>
             </div>
@@ -180,58 +248,107 @@
         <div class="section-header reveal">
           <span class="section-badge">✦ Daily Islamic Windows</span>
           <h2>Prayer Windows & Prohibited Times</h2>
-          <p>Real-time tracking of Makrooh (forbidden) and virtuous times for prayer</p>
+          <p>
+            Real-time tracking of Makrooh (forbidden) and virtuous times for
+            prayer
+          </p>
         </div>
         <div class="windows-grid">
           <div class="window-card prohibited reveal">
             <div class="window-top">
-              <span class="window-badge red"><i class="fa-solid fa-ban"></i> Prohibited</span>
+              <span class="window-badge red"
+                ><i class="fa-solid fa-ban"></i> Prohibited</span
+              >
               <span class="window-time" id="tulu-time">Sunrise + 15m</span>
             </div>
             <div class="window-icon"><i class="fa-solid fa-cloud-sun"></i></div>
             <h3>Sunrise (Tulu')</h3>
-            <p>From Sunrise until 15 minutes after. Strictly forbidden for any Salah or Sajdah.</p>
-            <div class="window-footer"><span class="badge-sub">Makrooh Tahrimi</span></div>
+            <p>
+              From Sunrise until 15 minutes after. Strictly forbidden for any
+              Salah or Sajdah.
+            </p>
+            <div class="window-footer">
+              <span class="badge-sub">Makrooh Tahrimi</span>
+            </div>
           </div>
           <div class="window-card prohibited reveal">
             <div class="window-top">
-              <span class="window-badge red"><i class="fa-solid fa-triangle-exclamation"></i> Strictly Prohibited</span>
-              <span class="window-time" id="zawal-window-time">10–15m Before Dhuhr</span>
+              <span class="window-badge red"
+                ><i class="fa-solid fa-triangle-exclamation"></i> Strictly
+                Prohibited</span
+              >
+              <span class="window-time" id="zawal-window-time"
+                >10–15m Before Dhuhr</span
+              >
             </div>
             <div class="window-icon"><i class="fa-solid fa-sun"></i></div>
             <h3>Zawal (Nisf-un-Nahar)</h3>
-            <p>When the sun is at its zenith before Dhuhr. All prayers strictly prohibited.</p>
-            <div class="window-footer"><span class="badge-sub">No Salah Permitted</span></div>
+            <p>
+              When the sun is at its zenith before Dhuhr. All prayers strictly
+              prohibited.
+            </p>
+            <div class="window-footer">
+              <span class="badge-sub">No Salah Permitted</span>
+            </div>
           </div>
           <div class="window-card prohibited reveal">
             <div class="window-top">
-              <span class="window-badge red"><i class="fa-solid fa-ban"></i> Prohibited</span>
-              <span class="window-time" id="ghurub-time">15m Before Sunset</span>
+              <span class="window-badge red"
+                ><i class="fa-solid fa-ban"></i> Prohibited</span
+              >
+              <span class="window-time" id="ghurub-time"
+                >15m Before Sunset</span
+              >
             </div>
-            <div class="window-icon"><i class="fa-solid fa-cloud-moon"></i></div>
+            <div class="window-icon">
+              <i class="fa-solid fa-cloud-moon"></i>
+            </div>
             <h3>Sunset (Ghurub)</h3>
-            <p>15 minutes before Maghrib. Forbidden for Nawafil except today's pending Asr.</p>
-            <div class="window-footer"><span class="badge-sub">Makrooh Tahrimi</span></div>
+            <p>
+              15 minutes before Maghrib. Forbidden for Nawafil except today's
+              pending Asr.
+            </p>
+            <div class="window-footer">
+              <span class="badge-sub">Makrooh Tahrimi</span>
+            </div>
           </div>
           <div class="window-card blessed reveal">
             <div class="window-top">
-              <span class="window-badge green"><i class="fa-solid fa-star"></i> Most Virtuous</span>
-              <span class="window-time" id="tahajjud-time">Last 3rd of Night</span>
+              <span class="window-badge green"
+                ><i class="fa-solid fa-star"></i> Most Virtuous</span
+              >
+              <span class="window-time" id="tahajjud-time"
+                >Last 3rd of Night</span
+              >
             </div>
             <div class="window-icon"><i class="fa-solid fa-moon"></i></div>
             <h3>Tahajjud & Suhoor</h3>
-            <p>The deepest part of night before Fajr. Duas and prayers are directly accepted.</p>
-            <div class="window-footer"><span class="badge-sub">High Reward Sunnah</span></div>
+            <p>
+              The deepest part of night before Fajr. Duas and prayers are
+              directly accepted.
+            </p>
+            <div class="window-footer">
+              <span class="badge-sub">High Reward Sunnah</span>
+            </div>
           </div>
           <div class="window-card blessed reveal">
             <div class="window-top">
-              <span class="window-badge blue"><i class="fa-solid fa-sparkles"></i> Rewarding</span>
+              <span class="window-badge blue"
+                ><i class="fa-solid fa-sparkles"></i> Rewarding</span
+              >
               <span class="window-time" id="duha-time">15m After Sunrise</span>
             </div>
-            <div class="window-icon"><i class="fa-solid fa-sun-plant-wilt"></i></div>
+            <div class="window-icon">
+              <i class="fa-solid fa-sun-plant-wilt"></i>
+            </div>
             <h3>Ishraq & Chasht (Duha)</h3>
-            <p>15 mins after Sunrise until Zawal. Equal to the reward of performing Umrah.</p>
-            <div class="window-footer"><span class="badge-sub">Recommended Sunnah</span></div>
+            <p>
+              15 mins after Sunrise until Zawal. Equal to the reward of
+              performing Umrah.
+            </p>
+            <div class="window-footer">
+              <span class="badge-sub">Recommended Sunnah</span>
+            </div>
           </div>
         </div>
       </section>
@@ -243,7 +360,9 @@
                 <span class="section-badge">✦ Daily Spiritual Goals</span>
                 <h3>Sunnah Checklist of the Day</h3>
               </div>
-              <span class="sunnah-count-badge" id="sunnahProgressBadge">0/5 Done</span>
+              <span class="sunnah-count-badge" id="sunnahProgressBadge"
+                >0/5 Done</span
+              >
             </div>
             <div class="sunnah-bar-wrap">
               <div class="sunnah-bar-fill" id="sunnahBarFill"></div>
@@ -267,36 +386,61 @@
                 <div class="check-box"><i class="fa-solid fa-check"></i></div>
                 <div class="sunnah-info">
                   <b>100x Astaghfirullah & Durood</b>
-                  <span>Send blessings upon the Prophet ﷺ throughout the day</span>
+                  <span
+                    >Send blessings upon the Prophet ﷺ throughout the day</span
+                  >
                 </div>
               </div>
               <div class="sunnah-item" data-id="s4">
                 <div class="check-box"><i class="fa-solid fa-check"></i></div>
                 <div class="sunnah-info">
                   <b>Daily Sadaqah or Smile</b>
-                  <span>Giving charity or bringing a smile to someone's face</span>
+                  <span
+                    >Giving charity or bringing a smile to someone's face</span
+                  >
                 </div>
               </div>
               <div class="sunnah-item" data-id="s5">
                 <div class="check-box"><i class="fa-solid fa-check"></i></div>
                 <div class="sunnah-info">
                   <b>Surah Al-Mulk at Night</b>
-                  <span>Protects from the punishment of the grave before sleep</span>
+                  <span
+                    >Protects from the punishment of the grave before
+                    sleep</span
+                  >
                 </div>
               </div>
             </div>
           </div>
           <div class="ayah-card reveal">
             <div class="ayah-top">
-              <span class="ayah-badge"><i class="fa-solid fa-quran"></i> Ayah of the Day</span>
+              <span class="ayah-badge"
+                ><i class="fa-solid fa-quran"></i> Ayah of the Day</span
+              >
               <span class="ayah-surah">Surah Al-Baqarah • 2:152</span>
             </div>
-            <div class="ayah-arabic">فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ</div>
-            <p class="ayah-trans">"So remember Me; I will remember you. And be grateful to Me and do not deny Me."</p>
-            <p class="ayah-urdu">"پس تم میرا ذکر کرو، میں بھی تمہیں یاد رکھوں گا، اور میرا شکر ادا کرو اور ناشکری نہ کرو۔"</p>
-            <div class="ayah-action-row" style="display:flex;gap:10px;flex-wrap:wrap;">
-              <button class="copy-ayah-btn" id="playAyahBtn"><i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span></button>
-              <button class="copy-ayah-btn" id="copyAyahBtn"><i class="fa-regular fa-copy"></i> <span>Copy Ayah</span></button>
+            <div class="ayah-arabic">
+              فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ
+            </div>
+            <p class="ayah-trans">
+              "So remember Me; I will remember you. And be grateful to Me and do
+              not deny Me."
+            </p>
+            <p class="ayah-urdu">
+              "پس تم میرا ذکر کرو، میں بھی تمہیں یاد رکھوں گا، اور میرا شکر ادا
+              کرو اور ناشکری نہ کرو۔"
+            </p>
+            <div
+              class="ayah-action-row"
+              style="display: flex; gap: 10px; flex-wrap: wrap"
+            >
+              <button class="copy-ayah-btn" id="playAyahBtn">
+                <i class="fa-solid fa-volume-high"></i>
+                <span>Listen Tilawat</span>
+              </button>
+              <button class="copy-ayah-btn" id="copyAyahBtn">
+                <i class="fa-regular fa-copy"></i> <span>Copy Ayah</span>
+              </button>
             </div>
           </div>
         </div>
@@ -305,13 +449,22 @@
       <section class="scroll-section hadith-section reveal">
         <div class="hadith-card">
           <div class="hadith-top">
-            <span class="hadith-badge"><i class="fa-solid fa-book-open"></i> Hadith of the Day</span>
+            <span class="hadith-badge"
+              ><i class="fa-solid fa-book-open"></i> Hadith of the Day</span
+            >
             <span class="hadith-src">Sahih al-Bukhari</span>
           </div>
           <div class="hadith-arabic">اَلصَّلَاةُ عِمَادُ الدِّيْن</div>
-          <p class="hadith-text">"Prayer is the pillar of religion. Whoever establishes it has established the religion, and whoever abandons it has demolished the religion."</p>
+          <p class="hadith-text">
+            "Prayer is the pillar of religion. Whoever establishes it has
+            established the religion, and whoever abandons it has demolished the
+            religion."
+          </p>
           <div class="hadith-footer">
-            <span class="hadith-narrator"><i class="fa-solid fa-user"></i> Narrated by Umar ibn al-Khattab (R.A)</span>
+            <span class="hadith-narrator"
+              ><i class="fa-solid fa-user"></i> Narrated by Umar ibn al-Khattab
+              (R.A)</span
+            >
           </div>
         </div>
       </section>
@@ -344,12 +497,21 @@
       <footer class="dash-footer reveal">
         <div class="footer-quote">
           <i class="fa-solid fa-star-and-crescent"></i>
-          <p>اَللّٰهُمَّ اَعِنِّيْ عَلٰى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</p>
-          <span>O Allah, help me remember You, be grateful to You, and worship You in the best manner.</span>
+          <p>
+            اَللّٰهُمَّ اَعِنِّيْ عَلٰى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ
+          </p>
+          <span
+            >O Allah, help me remember You, be grateful to You, and worship You
+            in the best manner.</span
+          >
         </div>
         <div class="footer-links">
           <span>Salah Sphere © 2026</span>
-          <span>Developed with <i class="fa-solid fa-heart" style="color:#ef4444"></i> <b>Kamran Mohsin</b> for the Ummah</span>
+          <span
+            >Developed with
+            <i class="fa-solid fa-heart" style="color: #ef4444"></i>
+            <b>Kamran Mohsin</b> for the Ummah</span
+          >
           <span>Contact me for update: +92 3046942398</span>
         </div>
       </footer>
