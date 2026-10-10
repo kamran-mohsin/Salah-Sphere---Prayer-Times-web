@@ -11,7 +11,9 @@ const Time = document.querySelector(".location time");
 const liveTime = document.querySelector(".clock b");
 const pray = document.querySelector(".pray h2");
 const remainingTime = document.querySelector(".pray time");
-const currentPrayName = document.querySelector(".current-prayer-btn .current-name");
+const currentPrayName = document.querySelector(
+  ".current-prayer-btn .current-name",
+);
 const islamicDateElem = document.querySelector(".islamic-date");
 const prayerStatusTag = document.querySelector(".prayer-status-tag");
 const detectBtn = document.querySelector(".detect");
@@ -32,7 +34,11 @@ if (detectBtn) {
             let geoUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}`;
             let geoRes = await fetch(geoUrl);
             let geoData = await geoRes.json();
-            let myCity = geoData.city || geoData.locality || geoData.principalSubdivision || "Islamabad";
+            let myCity =
+              geoData.city ||
+              geoData.locality ||
+              geoData.principalSubdivision ||
+              "Islamabad";
             val.value = myCity;
             nextPray(myCity);
           } catch (err) {
@@ -103,7 +109,11 @@ function checkProgress() {
   let now = new Date();
   let nowMin = now.getHours() * 60 + now.getMinutes();
   let fMin = timeToMin(f);
-  let srMin = sr ? timeToMin(sr) : (sunriseTimeRaw ? timeToMin(sunriseTimeRaw) : fMin + 75);
+  let srMin = sr
+    ? timeToMin(sr)
+    : sunriseTimeRaw
+      ? timeToMin(sunriseTimeRaw)
+      : fMin + 75;
   let dMin = timeToMin(d);
   let sMin = timeToMin(s);
   let mMin = timeToMin(m);
@@ -154,7 +164,10 @@ function checkProgress() {
     }
   }
   if (prayerStatusTag) {
-    let isMakrooh = (nowMin >= srMin && nowMin < srMin + 15) || (nowMin >= dMin - 15 && nowMin < dMin) || (nowMin >= mMin - 15 && nowMin < mMin);
+    let isMakrooh =
+      (nowMin >= srMin && nowMin < srMin + 15) ||
+      (nowMin >= dMin - 15 && nowMin < dMin) ||
+      (nowMin >= mMin - 15 && nowMin < mMin);
     if (isZawal) {
       prayerStatusTag.innerText = "⚠️ Zawal (Prohibited)";
       prayerStatusTag.style.color = "#f87171";
@@ -197,15 +210,20 @@ async function nextPray(city) {
   i = rawtimings.Isha.split(" ")[0];
   sr = rawtimings.Sunrise ? rawtimings.Sunrise.split(" ")[0] : "";
   let tuluEl = document.getElementById("tulu-time");
-  if (tuluEl && rawtimings.Sunrise) tuluEl.innerText = `${convertFormat(rawtimings.Sunrise)} + 15m`;
+  if (tuluEl && rawtimings.Sunrise)
+    tuluEl.innerText = `${convertFormat(rawtimings.Sunrise)} + 15m`;
   let zawalEl = document.getElementById("zawal-window-time");
-  if (zawalEl && rawtimings.Dhuhr) zawalEl.innerText = `15m Before ${convertFormat(rawtimings.Dhuhr)}`;
+  if (zawalEl && rawtimings.Dhuhr)
+    zawalEl.innerText = `15m Before ${convertFormat(rawtimings.Dhuhr)}`;
   let ghurubEl = document.getElementById("ghurub-time");
-  if (ghurubEl && (rawtimings.Sunset || rawtimings.Maghrib)) ghurubEl.innerText = `15m Before ${convertFormat(rawtimings.Sunset || rawtimings.Maghrib)}`;
+  if (ghurubEl && (rawtimings.Sunset || rawtimings.Maghrib))
+    ghurubEl.innerText = `15m Before ${convertFormat(rawtimings.Sunset || rawtimings.Maghrib)}`;
   let tahajjudEl = document.getElementById("tahajjud-time");
-  if (tahajjudEl && rawtimings.Fajr) tahajjudEl.innerText = `Till ${convertFormat(rawtimings.Fajr)}`;
+  if (tahajjudEl && rawtimings.Fajr)
+    tahajjudEl.innerText = `Till ${convertFormat(rawtimings.Fajr)}`;
   let duhaEl = document.getElementById("duha-time");
-  if (duhaEl && rawtimings.Sunrise) duhaEl.innerText = `After ${convertFormat(rawtimings.Sunrise)}`;
+  if (duhaEl && rawtimings.Sunrise)
+    duhaEl.innerText = `After ${convertFormat(rawtimings.Sunrise)}`;
   let now = new Date();
   let currentTime = now.getHours() + ":" + now.getMinutes();
   let curMint = currentTime.split(":");
@@ -323,14 +341,15 @@ const API = async (city) => {
 
       let nextPrayerName = fin ? fin.name : "Fajr";
       pray.innerText = nextPrayerName;
-      highlightActivePrayer(nextPrayerName);
     }
     updateRemaining();
     timer = setInterval(updateRemaining, 1000);
   }
   prayerSec();
   let hij = data.data.date ? data.data.date.hijri : null;
-  let hijriStr = hij ? `${hij.day} ${hij.month.en} ${hij.year} ${hij.designation.abbreviated}` : "";
+  let hijriStr = hij
+    ? `${hij.day} ${hij.month.en} ${hij.year} ${hij.designation.abbreviated}`
+    : "";
   return {
     format: [fajrTime, duhrTime, asrTime, magribTime, ishaTime],
     raw: rawtimings,
@@ -345,7 +364,8 @@ function highlightActivePrayer(prayerName) {
     Maghrib: ".mgrib",
     Isha: ".isha",
   };
-  const target = prayerName || (pray && pray.innerText ? pray.innerText.trim() : "");
+  const target =
+    prayerName || (pray && pray.innerText ? pray.innerText.trim() : "");
   document.querySelectorAll(".prayTimes > div").forEach((card) => {
     card.classList.remove("active-prayer");
   });
@@ -371,7 +391,7 @@ function initSunCurve(sunriseStr, sunsetStr) {
   updateSunPosition();
 }
 function updateSunPosition() {
-  if (!sunriseTimeRaw||!sunsetTimeRaw) return;
+  if (!sunriseTimeRaw || !sunsetTimeRaw) return;
   const cleanSunrise = sunriseTimeRaw.split(" ")[0];
   const cleanSunset = sunsetTimeRaw.split(" ")[0];
   const [riseH, riseM] = cleanSunrise.split(":").map(Number);
@@ -379,8 +399,9 @@ function updateSunPosition() {
   const sunriseSec = riseH * 3600 + riseM * 60;
   const sunsetSec = setH * 3600 + setM * 60;
   const now = new Date();
-  const currentSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  let progress = 0; 
+  const currentSec =
+    now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+  let progress = 0;
   const statusElem = document.querySelector(".sun-status");
   if (currentSec <= sunriseSec) {
     progress = 0;
@@ -410,22 +431,32 @@ function updateSunPosition() {
   }
 }
 try {
-  let hf = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", {day: "numeric", month: "long", year: "numeric"});
-  if (islamicDateElem) islamicDateElem.innerText = hf.format(new Date()) + " AH";
+  let hf = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  if (islamicDateElem)
+    islamicDateElem.innerText = hf.format(new Date()) + " AH";
 } catch (e) {}
 nextPray("Islamabad");
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, idx) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add("visible");
-      }, idx * 80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("visible");
+        }, idx * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 },
+);
+document
+  .querySelectorAll(".reveal")
+  .forEach((el) => revealObserver.observe(el));
 const sunnahItems = document.querySelectorAll(".sunnah-item");
 const sunnahProgressBadge = document.getElementById("sunnahProgressBadge");
 const sunnahBarFill = document.getElementById("sunnahBarFill");
@@ -443,8 +474,14 @@ function playSunnahCelebrationSound() {
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.12);
       gain.gain.setValueAtTime(0.001, ctx.currentTime + idx * 0.12);
-      gain.gain.exponentialRampToValueAtTime(0.22, ctx.currentTime + idx * 0.12 + 0.03);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.12 + 0.38);
+      gain.gain.exponentialRampToValueAtTime(
+        0.22,
+        ctx.currentTime + idx * 0.12 + 0.03,
+      );
+      gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        ctx.currentTime + idx * 0.12 + 0.38,
+      );
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(ctx.currentTime + idx * 0.12);
@@ -497,8 +534,10 @@ function updateSunnahProgress() {
       item.classList.remove("done");
     }
   });
-  if (sunnahProgressBadge) sunnahProgressBadge.innerText = `${doneCount}/${sunnahItems.length} Done`;
-  if (sunnahBarFill) sunnahBarFill.style.width = `${(doneCount / sunnahItems.length) * 100}%`;
+  if (sunnahProgressBadge)
+    sunnahProgressBadge.innerText = `${doneCount}/${sunnahItems.length} Done`;
+  if (sunnahBarFill)
+    sunnahBarFill.style.width = `${(doneCount / sunnahItems.length) * 100}%`;
 }
 updateSunnahProgress();
 sunnahItems.forEach((item) => {
@@ -519,11 +558,14 @@ sunnahItems.forEach((item) => {
 const copyAyahBtn = document.getElementById("copyAyahBtn");
 if (copyAyahBtn) {
   copyAyahBtn.addEventListener("click", () => {
-    const text = 'فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ\n"So remember Me; I will remember you. And be grateful to Me and do not deny Me." — Surah Al-Baqarah (2:152)';
+    const text =
+      'فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ\n"So remember Me; I will remember you. And be grateful to Me and do not deny Me." — Surah Al-Baqarah (2:152)';
     navigator.clipboard.writeText(text).then(() => {
-      copyAyahBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
+      copyAyahBtn.innerHTML =
+        '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
       setTimeout(() => {
-        copyAyahBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Copy Ayah</span>';
+        copyAyahBtn.innerHTML =
+          '<i class="fa-regular fa-copy"></i> <span>Copy Ayah</span>';
       }, 2000);
     });
   });
@@ -535,18 +577,24 @@ if (playAyahBtn) {
     if (ayahAudio) {
       ayahAudio.pause();
       ayahAudio = null;
-      playAyahBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
+      playAyahBtn.innerHTML =
+        '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
       return;
     }
-    ayahAudio = new Audio("https://everyayah.com/data/Alafasy_128kbps/002152.mp3");
-    playAyahBtn.innerHTML = '<i class="fa-solid fa-volume-high fa-beat"></i> <span>Playing Tilawat...</span>';
+    ayahAudio = new Audio(
+      "https://everyayah.com/data/Alafasy_128kbps/002152.mp3",
+    );
+    playAyahBtn.innerHTML =
+      '<i class="fa-solid fa-volume-high fa-beat"></i> <span>Playing Tilawat...</span>';
     ayahAudio.onended = () => {
       ayahAudio = null;
-      playAyahBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
+      playAyahBtn.innerHTML =
+        '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
     };
     ayahAudio.onerror = () => {
       ayahAudio = null;
-      playAyahBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
+      playAyahBtn.innerHTML =
+        '<i class="fa-solid fa-volume-high"></i> <span>Listen Tilawat</span>';
     };
     ayahAudio.play();
   });
@@ -559,6 +607,8 @@ const scrollObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.1 }
+  { threshold: 0.1 },
 );
-document.querySelectorAll(".reveal").forEach((el) => scrollObserver.observe(el));
+document
+  .querySelectorAll(".reveal")
+  .forEach((el) => scrollObserver.observe(el));

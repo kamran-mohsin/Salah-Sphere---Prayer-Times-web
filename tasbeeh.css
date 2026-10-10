@@ -1,10 +1,35 @@
 .tasbeeh-container {
+    width: 94%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 24px 20px 40px;
+    padding: 24px 10px 40px;
     display: flex;
     flex-direction: column;
     gap: 28px;
+    box-sizing: border-box;
+}
+.quick-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.summary-pill {
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    padding: 6px 14px;
+    border-radius: 12px;
+}
+.pill-label {
+    color: #94a3b8;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.summary-pill b {
+    color: #34d399;
+    font-size: 13px;
 }
 .zen-hero-card {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
@@ -615,6 +640,15 @@
     }
 }
 @media (max-width: 900px) {
+    .quick-summary {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+    .summary-pill {
+        flex: 1;
+        min-width: 120px;
+    }
     .duas-catalog-grid {
         grid-template-columns: 1fr;
     }
@@ -624,39 +658,72 @@
     }
     .zen-side-actions {
         flex-direction: row;
+        justify-content: center;
+        gap: 20px;
     }
     .zen-hero-card {
-        padding: 24px 18px;
+        padding: 24px 16px;
+        border-radius: 20px;
     }
     .zen-top-row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        gap: 14px;
+    }
+    .zen-controls-top {
+        width: 100%;
+        justify-content: space-between;
     }
 }
 @media (max-width: 600px) {
     .tasbeeh-container {
-        padding: 16px 12px 30px;
-        gap: 20px;
+        width: 96%;
+        padding: 16px 6px 30px;
+        gap: 18px;
+    }
+    .zen-hero-card {
+        padding: 20px 12px;
+    }
+    .zen-title-wrap h2 {
+        font-size: 19px;
+    }
+    .badge-tag {
+        font-size: 10px;
+    }
+    .zen-controls-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .sound-selector, .target-selector {
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .zen-select {
+        flex: 1;
+        text-align: right;
     }
     .zikr-cards-grid {
         grid-template-columns: 1fr;
     }
     .zen-tap-button {
-        width: 185px;
-        height: 185px;
+        width: 175px;
+        height: 175px;
     }
     .aura-outer-ring {
-        width: 215px;
-        height: 215px;
+        width: 205px;
+        height: 205px;
     }
     .zen-count-number {
-        font-size: 44px;
+        font-size: 42px;
     }
     .zen-arabic-display {
-        font-size: 19px;
+        font-size: 18px;
     }
     .dua-category-pills {
         gap: 6px;
+        -webkit-overflow-scrolling: touch;
     }
     .cat-pill {
         padding: 5px 10px;
@@ -664,5 +731,21 @@
     }
     .dua-arabic-text {
         font-size: 17px;
+        line-height: 1.6;
+    }
+    .dua-card {
+        padding: 16px 12px;
+    }
+    .zikr-catalog-section, .duas-library-section {
+        padding: 20px 14px;
+        border-radius: 18px;
+    }
+    .sec-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .reset-all-zikr-btn {
+        align-self: flex-start;
     }
 }
